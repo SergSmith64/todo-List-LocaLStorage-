@@ -32,8 +32,8 @@ window.onload = function() {
         todoList[i] = temp;
 
 
-        console.log("__d__что здесь_?__ ", d);
-        console.log("__что здесь__d.value_?__ ", d.value);
+        // console.log("__d__что здесь_?__ ", d);
+        // console.log("__что здесь__d.value_?__ ", d.value);
         console.log("__массив TEMP__ ", temp);
         console.log("__i__что здесь_?__ ", i);
 
@@ -72,4 +72,17 @@ window.onload = function() {
             document.getElementById('out').innerHTML = out;
         }
     }
+
+    // ___ СТЕРЕТЬ ВСЕ ___
+    document.getElementById('removeAll').onclick = function() {
+        console.log("ВСЕ СТИРАЮ!!!");
+        localStorage.clear();
+        window.location.reload();
+    }
+
+
+    // onclick='window.location.reload()'
+
+    // out += '<a href="#">WWWWWWWWW</a>';
 }
+
