@@ -76,13 +76,11 @@ window.onload = function() {
     // ___ СТЕРЕТЬ ВСЕ ___
     document.getElementById('removeAll').onclick = function() {
         console.log("ВСЕ СТИРАЮ!!!");
+        // __ очищаю локал
         localStorage.clear();
+        // __ перерисовываю окно
         window.location.reload();
     }
-
-
-    // onclick='window.location.reload()'
-
-    // out += '<a href="#">WWWWWWWWW</a>';
+ 
 }
 
