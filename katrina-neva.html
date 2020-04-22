@@ -118,17 +118,68 @@
         <input type="text" placeholder="Введите новое дело..." id="toDoEl">
         <span class="addBtn" onclick="newElement()">Добавить</span>
         <ul id="list">
-            <li>Hit the gym</li>
+            <!-- <li>Hit the gym</li>
             <li class="checked">Pay bills</li>
-            <li>Meet George</li>
+            <li>Meet George</li> -->
         </ul>
     </div>
 
 
     <script>
-        console.log("HeLLO, WorLD!")
+        console.log("HeLLO, WorLD!");
+
         // __ в переменную _LIST_ получаем тэг _UL_
         var List = document.querySelector('ul');
+        // __ и вешаю на него слушатель событий __
+        List.addEventListener('click', function(ev) {
+            // __ если клик по элементу списка _LI_
+            if(ev.target.tagName === "LI") {
+                // __ то тогда этому элементу списка устанавливаю класс
+                ev.target.classList.toggle('cheked');
+            } else if (ev.target.tagName === "SPAN") {
+                // __ то в переменную _DIV_ получим родителя этого СПАНА
+                var div = ev.target.parentNode;
+                // __ и удаляю его __
+                div.remove();
+            }
+        }, false);
+
+        // __ функция добавления нового элемента в список дел __
+        function newElement() {
+            // __ здесь в переменную _LI_ записываю создание нового элемента в тэгом _LI_
+            var li = document.createElement('li');
+            // __ в переменную _INPUTVALUE_ получаю значение поля _INPUT_
+            // __ то есть - то дело, которое ввел __
+            var inputValue = document.getElementById('toDoEl').value;
+            // __ далее в _T_ создаю новый текстовый узел на основе значения INPUT
+            var t = document.createTextNode(inputValue);
+            console.log("inputValue __", inputValue);
+            // __ и добавляю к тэгу _LI_ это самое значение
+            li.appendChild(t);
+
+            // __ проверяю: если инпут пустой, то есть ничего не ввели __
+            if (inputValue == "") {
+                // __ тогда выдаю предупреждение
+                alert("Введите дело");
+            } else {
+                // __ если дело добавлено, то добавляю его в список дел __
+                // __ и оно отрисовывается на странице!!! __
+                document.getElementById('list').appendChild(li);
+            }
+
+            // __ после этого надо очистить значение ИНПУТ __
+            document.getElementById('toDoEl').value = "";
+            // __ также надо создать новый элемент _SPAN_
+            var span = document.createElement('SPAN');
+            // __ затем нужно создать текст, который будет в этом СПАНЕ
+            var txt = document.createTextNode("X");
+        }
+
+
+        console.log("LIST __", List);
+        console.log("LIST.value __", List.value);
+
+        
     </script>
 </body>
 </html>
